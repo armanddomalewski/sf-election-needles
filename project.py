@@ -38,7 +38,10 @@ def display_name(name):
     m = re.match(r"(REGIONAL MEASURE|MEASURE|PROPOSITION)\s+([A-Z0-9]+)\s*-\s*(.*)", n, re.I)
     if m:
         kind = "Measure" if "MEASURE" in m.group(1).upper() else "Proposition"
-        return f"{kind} {m.group(2)}", m.group(3).capitalize()
+        sub = m.group(3).capitalize()
+        if m.group(1).upper().startswith(("REGIONAL", "PROPOSITION")):
+            sub = "San Francisco votes only. " + sub      # decided region- or state-wide
+        return f"{kind} {m.group(2)}", sub
     m = re.match(r"MEMBER, BOARD OF SUPERVISORS, DISTRICT (\d+)", n, re.I)
     if m:
         return f"Supervisor, District {m.group(1)}", "Ranked choice"

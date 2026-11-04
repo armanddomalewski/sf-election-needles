@@ -49,7 +49,17 @@ def main():
     ap.add_argument("--config", default=os.path.join(HERE, "config.json"))
     ap.add_argument("--dump-tables", action="store_true")
     ap.add_argument("--loop", type=int, metavar="SECONDS")
+    ap.add_argument("--url", help="just save this page's HTML (for pulling past elections), no parsing")
+    ap.add_argument("--out", help="where to save it (with --url)")
     a = ap.parse_args()
+    if a.url:
+        html = fetch_html(a.url)
+        out = a.out or os.path.basename(a.url.rstrip("/")) or "page.html"
+        os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
+        with open(out, "w", encoding="utf-8") as f:
+            f.write(html)
+        print(f"saved {out} ({len(html)} chars)", file=sys.stderr)
+        return
     cfg = json.load(open(a.config))
     while True:
         try:

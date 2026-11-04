@@ -57,6 +57,18 @@ def yes_no(contest):
     return yes, no
 
 
+def lean_for(cfg, key):
+    """Expected lean of the still-uncounted vote, in points, for a contest or candidate.
+
+    config "leans" maps a case-insensitive substring of the contest name (measures) or the
+    candidate name (races) to a number: positive means the late vote favors Yes / that
+    candidate. "lean_scale" multiplies every entry so one number tunes the whole table."""
+    for pat, v in cfg.get("leans", {}).items():
+        if pat.lower() in key.lower():
+            return v * cfg.get("lean_scale", 1.0)
+    return None
+
+
 def interval(share, n, remaining, cfg, mean_shift):
     sd_shift = cfg["late_shift_sd"] * remaining
     sd_sample = 100.0 * math.sqrt(share / 100 * (1 - share / 100) / max(n, 1)) * remaining
@@ -80,8 +92,11 @@ def project_contest(contest, remaining, cfg):
             base["subtitle"] = f"Needs {thr:g}% to pass. " + subtitle
         if n == 0:
             return {**base, "share": None}
-        share, lo, hi = interval(100.0 * yes["votes"] / n, n, remaining, cfg, cfg["late_shift_mean"])
-        return {**base, "share": share, "lo": lo, "hi": hi}
+        lean = lean_for(cfg, contest["name"])
+        shift = cfg["late_shift_mean"] if lean is None else lean
+        share, lo, hi = interval(100.0 * yes["votes"] / n, n, remaining, cfg, shift)
+        return {**base, "share": share, "lo": lo, "hi": hi, "late_lean": shift,
+                "raw_share": round(100.0 * yes["votes"] / n, 2)}
     cands = sorted((c for c in contest["choices"] if not NOT_A_CANDIDATE.search(c["name"])), key=lambda c: -c["votes"])
     if len(cands) < 2 or MULTI_SEAT.search(contest["name"]):
         return None                                   # uncontested or multi-seat
@@ -95,8 +110,11 @@ def project_contest(contest, remaining, cfg):
         base["subtitle"] = "Ranked choice, final round" if contest.get("last_round") else "Ranked choice, first choices for now"
     if n == 0:
         return {**base, "share": None}
-    share, lo, hi = interval(100.0 * a["votes"] / n, n, remaining, cfg, 0.0)
-    return {**base, "share": share, "lo": lo, "hi": hi}
+    la, lb = lean_for(cfg, a["name"]), lean_for(cfg, b["name"])
+    shift = la if la is not None else (-lb if lb is not None else 0.0)    # for the leader's two-way share
+    share, lo, hi = interval(100.0 * a["votes"] / n, n, remaining, cfg, shift)
+    return {**base, "share": share, "lo": lo, "hi": hi, "late_lean": shift,
+            "raw_share": round(100.0 * a["votes"] / n, 2)}
 
 
 def project_all(cfg, results, final=False):

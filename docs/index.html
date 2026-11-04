@@ -34,6 +34,7 @@
   svg { width: 100%; height: auto; display: block; }
   .margin { font-size: 24px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; min-height: 1.3em; }
   .range { margin-top: 2px; font-size: 13px; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; min-height: 1.2em; }
+  .now { margin-top: 4px; font-size: 12px; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; min-height: 1.2em; }
   .yes { color: var(--yes); } .no { color: var(--no); }
   .race .yes { color: #1f5fa8; } .race .no { color: #c7701b; }
   .waiting .bands path { fill: #cfcfcf !important; }
@@ -50,7 +51,7 @@
 </header>
 <div id="grid"></div>
 <div id="empty" hidden>Waiting for the first batch from the Department of Elections.</div>
-<footer>Source: SF Department of Elections batch releases. Projections use a simple late-ballot-shift model and are not official results. Ranked-choice races use the department's final-round totals once published, first choices before that. Measures are centred on their pass threshold. Gauge design after i86live.com.</footer>
+<footer>Source: SF Department of Elections batch releases. The big number is the projected final margin: the current count plus the typical late-ballot shift seen in SF's 2022, 2024 and June 2026 counts; "counted so far" is the raw tally. Not official results. Ranked-choice races use the department's final-round totals once published, first choices before that. Measures are centred on their pass threshold. Gauge design after i86live.com.</footer>
 <script>
 const CX = 200, CY = 200, R_OUT = 186, R_IN = 120, R_CI = 195;
 const DATA_URL = "projections.json";
@@ -76,14 +77,14 @@ function makeGauge(c) {
       <path class="ci" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
       <text class="lbl" x="14" y="222" text-anchor="start"></text><text class="lbl" x="386" y="222" text-anchor="end"></text>
       <g class="needle"><line x1="200" y1="200" x2="200" y2="38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="200" cy="200" r="7" fill="currentColor"/></g>
-    </svg><div class="margin"></div><div class="range"></div>`;
+    </svg><div class="margin"></div><div class="range"></div><div class="now"></div>`;
   const bands = card.querySelector(".bands");
   (c.type === "race" ? RACE : MEASURE).forEach((col, i) => {
     const p = document.createElementNS(SVGNS, "path");
     p.setAttribute("d", arcPath(i * 100 / 6, (i + 1) * 100 / 6)); p.setAttribute("fill", col); bands.appendChild(p);
   });
   const g = { card, needle: card.querySelector(".needle"), ci: card.querySelector(".ci"), proj: null, shown: 50, target: 50,
-              h2: card.querySelector("h2"), sub: card.querySelector(".sub"), margin: card.querySelector(".margin"), range: card.querySelector(".range"),
+              h2: card.querySelector("h2"), sub: card.querySelector(".sub"), margin: card.querySelector(".margin"), range: card.querySelector(".range"), now: card.querySelector(".now"),
               lbls: card.querySelectorAll(".lbl") };
   document.getElementById("grid").appendChild(card);
   return g;
@@ -122,13 +123,14 @@ function render(c) {
   g.sub.textContent = c.subtitle || "";
   g.sub.title = c.subtitle || "";
   g.lbls[0].textContent = short(c.left); g.lbls[1].textContent = short(c.right);
-  if (c.share == null) { g.proj = null; g.card.classList.add("waiting"); setCi(g, null, null); g.margin.textContent = ""; g.range.textContent = "No votes yet"; }
+  if (c.share == null) { g.proj = null; g.card.classList.add("waiting"); setCi(g, null, null); g.margin.textContent = ""; g.range.textContent = "No votes yet"; g.now.textContent = ""; }
   else {
     g.proj = { share: gaugeVal(c, c.share), lo: gaugeVal(c, c.lo ?? c.share), hi: gaugeVal(c, c.hi ?? c.share) };
     g.card.classList.remove("waiting");
     g.margin.textContent = marginLabel(c, c.share);
     g.margin.className = "margin " + (c.share > 50 ? "yes" : c.share < 50 ? "no" : "");
     g.range.textContent = c.final ? "Final" : `${marginLabel(c, c.hi)} to ${marginLabel(c, c.lo)}`;
+    g.now.textContent = c.raw_share == null ? "" : `Counted so far: ${short(c.right)} ${c.raw_share.toFixed(1)}%, ${short(c.left)} ${(100 - c.raw_share).toFixed(1)}%`;
     setCi(g, c.final ? null : g.proj.lo, g.proj.hi);
   }
   pickTarget(g);

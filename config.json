@@ -3,7 +3,7 @@
   "index_url": "https://www.sfelections.org/results/20261103/index.html",
   "include": ["^MEASURE ", "^REGIONAL MEASURE", "BOARD OF SUPERVISORS", "UNITED STATES REPRESENTATIVE",
               "ASSESSOR-RECORDER", "PUBLIC DEFENDER", "BART BOARD", "COMMUNITY COLLEGE BOARD PARTIAL"],
-  "skip": ["JUSTICE", "JUDGE", "REPRESENTATIVE, DISTRICT 15"],
+  "skip": ["JUSTICE", "JUDGE", "REPRESENTATIVE, DISTRICT 15", "REGIONAL MEASURE"],
   "expected_total_ballots": null,
   "expected_turnout": 0.62,
   "late_shift_mean": 0.0,

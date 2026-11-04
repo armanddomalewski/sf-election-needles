@@ -28,7 +28,8 @@ def titlecase(name):
     def fix(w):
         if re.fullmatch(r"(II|III|IV|JR\.?|SR\.?|DJ|PJ)", w, re.I):
             return w.upper()
-        return re.sub(r"(^|[-'’(\"])([a-z])", lambda m: m.group(1) + m.group(2).upper(), w.lower())
+        t = re.sub(r"(^|[-'’(\"])([a-z])", lambda m: m.group(1) + m.group(2).upper(), w.lower())
+        return re.sub(r"^(Mc|Mac)([a-z])", lambda m: m.group(1) + m.group(2).upper(), t)
     return " ".join(fix(w) for w in name.split())
 
 

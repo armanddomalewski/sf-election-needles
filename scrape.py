@@ -95,31 +95,51 @@ def clean(s):
 
 INT = re.compile(r"^-?[\d,]+$")
 PCT = re.compile(r"^-?\d+(\.\d+)?\s*%$")
+# ranked-choice cells once votes exist: "6,601 (82.10%)"; losers show "eliminated in Round 2"
+NUM_PCT = re.compile(r"^\s*([\d,]+)\s*\(\s*([\d.]+)\s*%\s*\)\s*$")
 TOTAL_WORDS = ("total", "ballots cast", "turnout", "registration", "precincts", "under vote", "over vote",
                "undervote", "overvote", "blank", "write-in total", "continuing ballots", "exhausted")
+
+
+def cell_value(c):
+    """-> (votes, pct) for a cell holding a count, a percent, or "count (pct%)"; else (None, None)."""
+    c = c.strip()
+    m = NUM_PCT.match(c)
+    if m:
+        return int(m.group(1).replace(",", "")), float(m.group(2))
+    if INT.match(c.replace(" ", "")):
+        return int(c.replace(",", "").replace(" ", "")), None
+    if PCT.match(c):
+        return None, float(c.rstrip("% "))
+    return None, None
 
 
 def parse_table(rows):
     """Turn a table into {"choices": [...], "total": int|None, "meta": {...}} or None.
 
-    The department's ranked-choice tables add "Round 1" and "Last Round" columns once votes
-    exist; when a "Last Round" header is present that column is used for the vote count."""
+    Ranked-choice tables carry "Round 1" and "Round N (Last Round)" columns once votes exist
+    (or a single "Round 1 (Last Round)" column for two-candidate races). When a Last Round
+    header is present that column is the vote count, and a candidate whose last-round cell
+    holds no number ("eliminated in Round 2") counts as 0 there."""
     choices, meta = [], {}
-    header = rows[0] if rows and not any(INT.match(c.replace(" ", "")) for c in rows[0][1:]) else []
+    header = rows[0] if rows and not any(cell_value(c)[0] is not None for c in rows[0][1:]) else []
     last_round_col = next((i for i, h in enumerate(header) if "last round" in h.lower()), None)
     for row in rows:
         if len(row) < 2 or row is header:
             continue
         name = row[0]
-        nums = [c for c in row[1:] if INT.match(c.replace(" ", ""))]
-        pcts = [c for c in row[1:] if PCT.match(c)]
+        vals = [cell_value(c) for c in row[1:]]
+        nums = [v for v, _ in vals if v is not None]
+        pcts = [p for _, p in vals if p is not None]
         if not nums:
             continue
-        if last_round_col is not None and last_round_col < len(row) and INT.match(row[last_round_col].replace(" ", "")):
-            votes = int(row[last_round_col].replace(",", ""))
+        if last_round_col is not None and last_round_col < len(row):
+            lr_votes, lr_pct = cell_value(row[last_round_col])
+            votes = lr_votes if lr_votes is not None else 0          # eliminated before the last round
+            pct = lr_pct if lr_pct is not None else 0.0
         else:
-            votes = int(nums[-1].replace(",", ""))   # last integer column is the cumulative count
-        pct = float(pcts[-1].rstrip("% ")) if pcts else None
+            votes = nums[-1]                                          # last count column is cumulative
+            pct = pcts[-1] if pcts else None
         key = name.lower()
         if any(w in key for w in TOTAL_WORDS):
             meta[name] = votes

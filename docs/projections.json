@@ -1,5 +1,5 @@
 {
- "updated_utc": "2026-11-04T01:42:07+00:00",
+ "updated_utc": "2026-11-04T01:45:15+00:00",
  "report_title": "November 3, 2026, Consolidated General Election Results (Zero Report)",
  "next_update": "November 3, 2026 8:45 PM",
  "pct_reporting": 0,
@@ -126,22 +126,6 @@
     "J.r. Eppler": 0,
     "Theo Ellington": 0,
     "Jamo Muhammad": 0
-   },
-   "share": null,
-   "final": false
-  },
-  {
-   "id": "regional-measure-rtm-regional-transit-measure",
-   "name": "Measure RTM",
-   "subtitle": "Regional transit measure",
-   "source_name": "REGIONAL MEASURE RTM - REGIONAL TRANSIT MEASURE",
-   "type": "measure",
-   "left": "No",
-   "right": "Yes",
-   "threshold": 50.0,
-   "votes": {
-    "Yes": 0,
-    "No": 0
    },
    "share": null,
    "final": false

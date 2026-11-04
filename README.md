@@ -80,17 +80,25 @@ late_shift ~ Normal(late_shift_mean, late_shift_sd)   # percentage points, per c
 The "possible range" is the 95% interval of that, plus a sampling term that only matters in tiny
 batches, with a floor of `min_half_width` so the needle never claims false precision.
 
-`late_shift_mean` and `late_shift_sd` are placeholders (0 and 3) until calibrated. To calibrate,
-save the index page for each batch of a few past elections (the dated `data/YYYYMMDD/` folders on
-the department's site hold each release) into one directory per election and run:
+The direction is set per contest in `config.json`'s `leans` table (positive = toward Yes or the
+named candidate), scaled by `lean_scale`. The sizes come from the department's own batch reports
+for November 2022 and November 2024, pulled with `fetch_history.py` and summarized by
+`calibrate.py` into `history/shifts_2022_2024.csv`. What those show:
+
+- The first election-night batch was 43% (2022) and 48% (2024) of the final count.
+- The implied lean of the uncounted vote ran 2 to 5 points toward the progressive side on most
+  contested local measures and candidate races, and 8 to 10 in a few (2022 District 6, 2022
+  Measure I on reopening JFK Drive). The spread across contests was 3 to 4 points, which is
+  `late_shift_sd`.
+- The Great Highway moved the same way both times: 2024 Prop K (close it) gained 2.4 points of
+  lean, 2022 Prop I (reopen) lost 7.7.
+
+To refit after this election, pull its reports and rerun:
 
 ```bash
-python3 calibrate.py snapshots/20241105w snapshots/20240305w > shifts.csv
+python3 fetch_history.py 20261103
+python3 calibrate.py history/20261103 history/20241105 history/20221108 > history/shifts.csv
 ```
-
-Group the shifts by contest type (citywide measures vs. district races) and take the mean and
-standard deviation of each group. Set the sign per contest: a positive shift means late ballots
-favor Yes.
 
 The "% counted" figure divides ballots cast by `expected_total_ballots`, or if that is null by
 registration (read from the page) times `expected_turnout`. Replace it with the department's

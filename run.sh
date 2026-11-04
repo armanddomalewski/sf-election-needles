@@ -18,6 +18,7 @@ while true; do
     fi
     sleep 30
   else
+    git pull -q --rebase origin main 2>/dev/null || true     # pick up config/lean tweaks
     python3 fetch_browser.py && python3 project.py && ./publish.sh
     sleep "$INTERVAL"
   fi

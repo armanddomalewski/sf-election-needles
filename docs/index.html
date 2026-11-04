@@ -58,7 +58,10 @@ const DATA_URL = "projections.json";
 const REFRESH_MS = Number(new URLSearchParams(location.search).get("refresh")) * 1000 || 30000;
 const MEASURE = ["#b2182b", "#e05a5a", "#f4a5a5", "#a6dba0", "#4dac5f", "#1b7837"];
 const RACE = ["#c7701b", "#e39a55", "#f3c9a0", "#a9c6e8", "#5b8fd1", "#1f5fa8"];
-const angleOf = v => Math.PI * (1 - Math.min(100, Math.max(0, v)) / 100);
+// The dial is zoomed: it spans MIN..MAX percent of the two-way share (centre = 50), so a
+// range of a few points is visible. Values beyond the ends pin to the edge.
+const MIN = 30, MAX = 70;
+const angleOf = v => Math.PI * (1 - (Math.min(MAX, Math.max(MIN, v)) - MIN) / (MAX - MIN));
 const pt = (r, a) => [CX + r * Math.cos(a), CY - r * Math.sin(a)];
 const SVGNS = "http://www.w3.org/2000/svg";
 function arcPath(v0, v1) {
@@ -81,7 +84,7 @@ function makeGauge(c) {
   const bands = card.querySelector(".bands");
   (c.type === "race" ? RACE : MEASURE).forEach((col, i) => {
     const p = document.createElementNS(SVGNS, "path");
-    p.setAttribute("d", arcPath(i * 100 / 6, (i + 1) * 100 / 6)); p.setAttribute("fill", col); bands.appendChild(p);
+    p.setAttribute("d", arcPath(MIN + i * (MAX - MIN) / 6, MIN + (i + 1) * (MAX - MIN) / 6)); p.setAttribute("fill", col); bands.appendChild(p);
   });
   const g = { card, needle: card.querySelector(".needle"), ci: card.querySelector(".ci"), proj: null, shown: 50, target: 50,
               h2: card.querySelector("h2"), sub: card.querySelector(".sub"), margin: card.querySelector(".margin"), range: card.querySelector(".range"), now: card.querySelector(".now"),

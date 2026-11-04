@@ -24,10 +24,6 @@ while true; do
     fi
     git pull -q --rebase origin main 2>/dev/null || true     # pick up config/lean tweaks
     python3 fetch_browser.py && python3 project.py && ./publish.sh
-    # keep the raw page public too, so the parser can be checked against it from anywhere
-    newest=$(ls -t snapshots/*.html 2>/dev/null | head -1)
-    [ -n "$newest" ] && cp "$newest" docs/latest_page.html && git add docs/latest_page.html \
-      && git -c commit.gpgsign=false commit -q -m "latest page" docs/latest_page.html 2>/dev/null && git push -q origin main 2>/dev/null
     sleep "$INTERVAL"
   fi
 done

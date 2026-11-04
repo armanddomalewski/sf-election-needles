@@ -1,12 +1,310 @@
 {
- "updated_utc": "2026-11-04T01:06:50+00:00",
- "report_title": "403 ERROR",
- "next_update": null,
+ "updated_utc": "2026-11-04T01:09:28+00:00",
+ "report_title": "November 3, 2026, Consolidated General Election Results (Zero Report)",
+ "next_update": "November 3, 2026 8:45 PM",
  "pct_reporting": 0,
  "ballots_cast": 0,
- "expected_total_ballots": 1,
- "precincts_reported": null,
- "precincts_total": null,
+ "expected_total_ballots": 330902,
+ "precincts_reported": 0,
+ "precincts_total": 514,
  "final": false,
- "contests": []
+ "contests": [
+  {
+   "id": "united-states-representative-district-11",
+   "name": "U.S. House, District 11",
+   "subtitle": "San Francisco votes only",
+   "source_name": "UNITED STATES REPRESENTATIVE, DISTRICT 11",
+   "type": "race",
+   "left": "Connie Chan",
+   "right": "Scott Wiener",
+   "threshold": 50.0,
+   "rcv": false,
+   "last_round": false,
+   "votes": {
+    "Scott Wiener": 0,
+    "Connie Chan": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "member-board-of-supervisors-district-2-ranked-choice-voting-",
+   "name": "Supervisor, District 2",
+   "subtitle": "Ranked choice, first choices for now",
+   "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 2 (Ranked-Choice Voting Contest)",
+   "type": "race",
+   "left": "Nicholas Berg",
+   "right": "Stephen Sherrill",
+   "threshold": 50.0,
+   "rcv": true,
+   "last_round": false,
+   "votes": {
+    "Stephen Sherrill": 0,
+    "Nicholas Berg": 0,
+    "Monthanus Ratanapakdee": 0,
+    "Guy Mccoy": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "member-board-of-supervisors-district-4-ranked-choice-voting-",
+   "name": "Supervisor, District 4",
+   "subtitle": "Ranked choice, first choices for now",
+   "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 4 (Ranked-Choice Voting Contest)",
+   "type": "race",
+   "left": "Albert Chow",
+   "right": "Alan Wong",
+   "threshold": 50.0,
+   "rcv": true,
+   "last_round": false,
+   "votes": {
+    "Alan Wong": 0,
+    "Albert Chow": 0,
+    "Jeremy Julian Greco": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "member-board-of-supervisors-district-6-ranked-choice-voting-",
+   "name": "Supervisor, District 6",
+   "subtitle": "Ranked choice, first choices for now",
+   "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 6 (Ranked-Choice Voting Contest)",
+   "type": "race",
+   "left": "Alex Behrend",
+   "right": "Matt Dorsey",
+   "threshold": 50.0,
+   "rcv": true,
+   "last_round": false,
+   "votes": {
+    "Matt Dorsey": 0,
+    "Alex Behrend": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "member-board-of-supervisors-district-8-ranked-choice-voting-",
+   "name": "Supervisor, District 8",
+   "subtitle": "Ranked choice, first choices for now",
+   "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 8 (Ranked-Choice Voting Contest)",
+   "type": "race",
+   "left": "Michael T. Nguyen",
+   "right": "Darshini Patel",
+   "threshold": 50.0,
+   "rcv": true,
+   "last_round": false,
+   "votes": {
+    "Darshini Patel": 0,
+    "Michael T. Nguyen": 0,
+    "Emanuel \"Manny\" Yekutiel": 0,
+    "Gary Mccoy": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "member-board-of-supervisors-district-10-ranked-choice-voting",
+   "name": "Supervisor, District 10",
+   "subtitle": "Ranked choice, first choices for now",
+   "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 10 (Ranked-Choice Voting Contest)",
+   "type": "race",
+   "left": "Ellsworth \"Ell\" M. Jennison, JR.",
+   "right": "Jessica Pessecow",
+   "threshold": 50.0,
+   "rcv": true,
+   "last_round": false,
+   "votes": {
+    "Jessica Pessecow": 0,
+    "Ellsworth \"Ell\" M. Jennison, JR.": 0,
+    "Mike Trouble Lin": 0,
+    "Pearci \"Pj\" Bastiany III": 0,
+    "Dionjay (Dj) Brookter": 0,
+    "Deandra Bryant": 0,
+    "Shawn M. Richard": 0,
+    "J.r. Eppler": 0,
+    "Theo Ellington": 0,
+    "Jamo Muhammad": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "regional-measure-rtm-regional-transit-measure",
+   "name": "Measure RTM",
+   "subtitle": "Regional transit measure",
+   "source_name": "REGIONAL MEASURE RTM - REGIONAL TRANSIT MEASURE",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-a-charter-changes-affecting-various-city-departments",
+   "name": "Measure A",
+   "subtitle": "Charter changes affecting various city departments and commissions",
+   "source_name": "MEASURE A - CHARTER CHANGES AFFECTING VARIOUS CITY DEPARTMENTS AND COMMISSIONS",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-b-establishing-a-municipal-finance-corporation-and-a",
+   "name": "Measure B",
+   "subtitle": "Establishing a municipal finance corporation and a public bank",
+   "source_name": "MEASURE B - ESTABLISHING A MUNICIPAL FINANCE CORPORATION AND A PUBLIC BANK",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-c-contributions-to-the-housing-trust-fund",
+   "name": "Measure C",
+   "subtitle": "Contributions to the housing trust fund",
+   "source_name": "MEASURE C - CONTRIBUTIONS TO THE HOUSING TRUST FUND",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-d-changes-to-ballot-measure-process",
+   "name": "Measure D",
+   "subtitle": "Changes to ballot measure process",
+   "source_name": "MEASURE D - CHANGES TO BALLOT MEASURE PROCESS",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-e-city-administrator-s-authority-and-changes-to-city",
+   "name": "Measure E",
+   "subtitle": "City administrator\u2019s authority and changes to city contracting",
+   "source_name": "MEASURE E - CITY ADMINISTRATOR\u2019S AUTHORITY AND CHANGES TO CITY CONTRACTING",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-f-changes-to-executive-branch-management",
+   "name": "Measure F",
+   "subtitle": "Changes to executive branch management",
+   "source_name": "MEASURE F - CHANGES TO EXECUTIVE BRANCH MANAGEMENT",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-g-allowing-private-vehicles-on-the-upper-great-highw",
+   "name": "Measure G",
+   "subtitle": "Allowing private vehicles on the upper great highway in sunset dunes park",
+   "source_name": "MEASURE G - ALLOWING PRIVATE VEHICLES ON THE UPPER GREAT HIGHWAY IN SUNSET DUNES PARK",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-h-parcel-tax-to-fund-muni-operations",
+   "name": "Measure H",
+   "subtitle": "Parcel tax to fund muni operations",
+   "source_name": "MEASURE H - PARCEL TAX TO FUND MUNI OPERATIONS",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-i-changes-to-real-property-transfer-tax",
+   "name": "Measure I",
+   "subtitle": "Changes to real property transfer tax",
+   "source_name": "MEASURE I - CHANGES TO REAL PROPERTY TRANSFER TAX",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  },
+  {
+   "id": "measure-j-removal-of-foreclosure-exemption-for-real-property",
+   "name": "Measure J",
+   "subtitle": "Removal of foreclosure exemption for real property transfer tax",
+   "source_name": "MEASURE J - REMOVAL OF FORECLOSURE EXEMPTION FOR REAL PROPERTY TRANSFER TAX",
+   "type": "measure",
+   "left": "No",
+   "right": "Yes",
+   "threshold": 50.0,
+   "votes": {
+    "Yes": 0,
+    "No": 0
+   },
+   "share": null,
+   "final": false
+  }
+ ]
 }

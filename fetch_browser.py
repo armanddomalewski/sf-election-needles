@@ -22,14 +22,18 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 def fetch_html(url):
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
+        # A visible window of the installed Chrome: the department's firewall also rejects
+        # headless browsers. The window opens, loads the page, and closes within seconds.
         try:
-            browser = p.chromium.launch(channel="chrome", headless=True)   # the installed Chrome
+            browser = p.chromium.launch(channel="chrome", headless=False)
         except Exception:
-            browser = p.chromium.launch(headless=True)                     # after: playwright install chromium
+            browser = p.chromium.launch(headless=False)                    # after: playwright install chromium
         page = browser.new_page()
         page.goto(url, wait_until="networkidle", timeout=60000)
         html = page.content()
         browser.close()
+    if "<h1>403 ERROR</h1>" in html or "Request blocked" in html:
+        raise RuntimeError("the department's site returned 403 to the browser fetch")
     return html
 
 

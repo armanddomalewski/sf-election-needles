@@ -152,6 +152,8 @@ def main():
     cfg = json.load(open(a.config))
     results = json.load(open(a.results))
     p = project_all(cfg, results, a.final)
+    if not p["contests"]:
+        sys.exit("no contests parsed (blocked page or layout change); leaving the published file alone")
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
     with open(a.out, "w") as f:
         json.dump(p, f, indent=1)

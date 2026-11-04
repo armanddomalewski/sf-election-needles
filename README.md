@@ -83,7 +83,7 @@ batches, with a floor of `min_half_width` so the needle never claims false preci
 The direction is set per contest in `config.json`'s `leans` table (positive = toward Yes or the
 named candidate), scaled by `lean_scale`. The sizes come from the department's own batch reports
 for November 2022 and November 2024, pulled with `fetch_history.py` and summarized by
-`calibrate.py` into `history/shifts_2022_2024.csv`. What those show:
+`calibrate.py` into `history/shifts_2022_2026.csv`. What those show:
 
 - The first election-night batch was 43% (2022) and 48% (2024) of the final count.
 - The implied lean of the uncounted vote ran 2 to 5 points toward the progressive side on most

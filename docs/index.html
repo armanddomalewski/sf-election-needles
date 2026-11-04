@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SF Election Needles</title>
+<meta name="description" content="Live projections for every contested San Francisco race, updated as the Department of Elections releases batches.">
+<style>
+  :root { --bg: #fff; --ink: #121212; --muted: #666; --card: #fafafa; --line: #e4e4e4; --yes: #1b7837; --no: #b2182b; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #111; --ink: #eee; --muted: #999; --card: #1a1a1a; --line: #2a2a2a; } }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { padding: 16px; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  header { max-width: 1100px; margin: 0 auto 1rem; text-align: center; }
+  h1 { margin: 0.4rem 0 0.2rem; font-size: clamp(22px, 4vw, 32px); line-height: 1.2; }
+  #sub { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; min-height: 1.4em; }
+  #grid { max-width: 1100px; margin: 0 auto; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 12px 10px; }
+  .card h2 { margin: 0 0 2px; font-size: 17px; line-height: 1.25; text-align: center; }
+  .card .sub { font-size: 11px; color: var(--muted); text-align: center; min-height: 2.4em; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  svg { width: 100%; height: auto; display: block; }
+  .margin { font-size: 24px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; min-height: 1.3em; }
+  .range { margin-top: 2px; font-size: 13px; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; min-height: 1.2em; }
+  .yes { color: var(--yes); } .no { color: var(--no); }
+  .race .yes { color: #1f5fa8; } .race .no { color: #c7701b; }
+  .waiting .bands path { fill: #cfcfcf !important; }
+  .waiting .needle { opacity: 0.25; }
+  .lbl { font-size: 11px; fill: var(--muted); }
+  footer { margin: 2rem auto 0; max-width: 1100px; font-size: 12px; color: var(--muted); text-align: center; }
+  #empty { text-align: center; color: var(--muted); padding: 3rem 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>San Francisco election needles</h1>
+  <div id="sub">Loading…</div>
+</header>
+<div id="grid"></div>
+<div id="empty" hidden>Waiting for the first batch from the Department of Elections.</div>
+<footer>Source: SF Department of Elections batch releases. Projections use a simple late-ballot-shift model and are not official results. Ranked-choice races use the department's final-round totals once published, first choices before that. Measures are centred on their pass threshold. Gauge design after i86live.com.</footer>
+<script>
+const CX = 200, CY = 200, R_OUT = 186, R_IN = 120, R_CI = 195;
+const DATA_URL = "projections.json";
+const REFRESH_MS = Number(new URLSearchParams(location.search).get("refresh")) * 1000 || 30000;
+const MEASURE = ["#b2182b", "#e05a5a", "#f4a5a5", "#a6dba0", "#4dac5f", "#1b7837"];
+const RACE = ["#c7701b", "#e39a55", "#f3c9a0", "#a9c6e8", "#5b8fd1", "#1f5fa8"];
+const angleOf = v => Math.PI * (1 - Math.min(100, Math.max(0, v)) / 100);
+const pt = (r, a) => [CX + r * Math.cos(a), CY - r * Math.sin(a)];
+const SVGNS = "http://www.w3.org/2000/svg";
+function arcPath(v0, v1) {
+  const a0 = angleOf(v0), a1 = angleOf(v1);
+  const [x0, y0] = pt(R_OUT, a0), [x1, y1] = pt(R_OUT, a1), [x2, y2] = pt(R_IN, a1), [x3, y3] = pt(R_IN, a0);
+  return `M${x0},${y0} A${R_OUT},${R_OUT} 0 0 1 ${x1},${y1} L${x2},${y2} A${R_IN},${R_IN} 0 0 0 ${x3},${y3} Z`;
+}
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const gauges = new Map();   // id -> gauge object
+
+function makeGauge(c) {
+  const card = document.createElement("div");
+  card.className = "card waiting" + (c.type === "race" ? " race" : "");
+  card.innerHTML = `<h2></h2><div class="sub"></div>
+    <svg viewBox="-4 -12 408 240" role="img"><g class="bands"></g>
+      <path class="ci" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      <text class="lbl" x="14" y="222" text-anchor="start"></text><text class="lbl" x="386" y="222" text-anchor="end"></text>
+      <g class="needle"><line x1="200" y1="200" x2="200" y2="38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="200" cy="200" r="7" fill="currentColor"/></g>
+    </svg><div class="margin"></div><div class="range"></div>`;
+  const bands = card.querySelector(".bands");
+  (c.type === "race" ? RACE : MEASURE).forEach((col, i) => {
+    const p = document.createElementNS(SVGNS, "path");
+    p.setAttribute("d", arcPath(i * 100 / 6, (i + 1) * 100 / 6)); p.setAttribute("fill", col); bands.appendChild(p);
+  });
+  const g = { card, needle: card.querySelector(".needle"), ci: card.querySelector(".ci"), proj: null, shown: 50, target: 50,
+              h2: card.querySelector("h2"), sub: card.querySelector(".sub"), margin: card.querySelector(".margin"), range: card.querySelector(".range"),
+              lbls: card.querySelectorAll(".lbl") };
+  document.getElementById("grid").appendChild(card);
+  return g;
+}
+function setNeedle(g, v) { g.needle.setAttribute("transform", `rotate(${90 - angleOf(v) * 180 / Math.PI} ${CX} ${CY})`); }
+function setCi(g, lo, hi) {
+  if (lo == null || hi == null || hi <= lo) { g.ci.setAttribute("d", ""); return; }
+  const [x0, y0] = pt(R_CI, angleOf(lo)), [x1, y1] = pt(R_CI, angleOf(hi));
+  g.ci.setAttribute("d", `M${x0},${y0} A${R_CI},${R_CI} 0 0 1 ${x1},${y1}`);
+}
+function pickTarget(g) {
+  if (!g.proj) { g.target = 50; return; }
+  if (reduceMotion || g.proj.hi <= g.proj.lo) { g.target = g.proj.share; return; }
+  const sd = (g.proj.hi - g.proj.lo) / 3.92; let v;
+  do { const u = 1 - Math.random(), w = Math.random(); v = g.proj.share + sd * Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * w); }
+  while (v < g.proj.lo || v > g.proj.hi);
+  g.target = v;
+}
+(function tick() { for (const g of gauges.values()) { g.shown += (g.target - g.shown) * 0.08; setNeedle(g, g.shown); } requestAnimationFrame(tick); })();
+setInterval(() => gauges.forEach(pickTarget), 450);
+const short = s => s.length > 22 ? s.slice(0, 21) + "…" : s;
+const thr = c => c.threshold || 50;
+const gaugeVal = (c, share) => 50 + (share - thr(c));          // straight up = pass threshold
+function marginLabel(c, share) {
+  if (thr(c) !== 50) {                                          // supermajority measure: distance from the bar
+    const m = Math.round((share - thr(c)) * 10) / 10;
+    return m >= 0 ? `Passing +${m}` : `Failing −${Math.abs(m)}`;
+  }
+  const m = Math.round((share - 50) * 2 * 10) / 10;             // margin in points of the two-way vote
+  return m === 0 ? "Even" : `${short(m > 0 ? c.right : c.left)} +${Math.abs(m)}`;
+}
+function render(c) {
+  let g = gauges.get(c.id);
+  if (!g) { g = makeGauge(c); gauges.set(c.id, g); }
+  g.h2.textContent = c.name;
+  g.sub.textContent = c.subtitle || "";
+  g.sub.title = c.subtitle || "";
+  g.lbls[0].textContent = short(c.left); g.lbls[1].textContent = short(c.right);
+  if (c.share == null) { g.proj = null; g.card.classList.add("waiting"); setCi(g, null, null); g.margin.textContent = ""; g.range.textContent = "No votes yet"; }
+  else {
+    g.proj = { share: gaugeVal(c, c.share), lo: gaugeVal(c, c.lo ?? c.share), hi: gaugeVal(c, c.hi ?? c.share) };
+    g.card.classList.remove("waiting");
+    g.margin.textContent = marginLabel(c, c.share);
+    g.margin.className = "margin " + (c.share > 50 ? "yes" : c.share < 50 ? "no" : "");
+    g.range.textContent = c.final ? "Final" : `${marginLabel(c, c.hi)} to ${marginLabel(c, c.lo)}`;
+    setCi(g, c.final ? null : g.proj.lo, g.proj.hi);
+  }
+  pickTarget(g);
+}
+const DEMO = new URLSearchParams(location.search).has("demo") ? {
+  updated_utc: new Date().toISOString(), pct_reporting: 41, contests: [
+    { id: "a", name: "Measure A", subtitle: "Charter changes affecting various city departments", type: "measure", left: "No", right: "Yes", share: 52.3, lo: 50.1, hi: 54.5 },
+    { id: "h", name: "Measure H", subtitle: "Needs 66.67% to pass. Parcel tax to fund Muni", type: "measure", threshold: 66.67, left: "No", right: "Yes", share: 64.0, lo: 61.5, hi: 66.5 },
+    { id: "d2", name: "Supervisor, District 2", subtitle: "Ranked choice, first choices for now", type: "race", rcv: true, left: "Nicholas Berg", right: "Stephen Sherrill", share: 51.0, lo: 48.2, hi: 53.8 },
+    { id: "c", name: "Measure C", subtitle: "Contributions to the housing trust fund", type: "measure", left: "No", right: "Yes", share: null } ] } : null;
+const POLLS_CLOSE = Date.parse("2026-11-03T20:00:00-08:00");
+async function load() {
+  let d = DEMO;
+  if (!d) { try { const r = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: "no-store" }); d = r.ok ? await r.json() : null; } catch (e) { d = null; } }
+  const sub = document.getElementById("sub");
+  if (!d || !d.contests?.length) {
+    document.getElementById("empty").hidden = false;
+    sub.textContent = Date.now() < POLLS_CLOSE ? "Polls close at 8 PM" : "Waiting for results";
+    return;
+  }
+  document.getElementById("empty").hidden = true;
+  const t = d.updated_utc ? new Date(d.updated_utc).toLocaleTimeString("en-US", { timeZone: "America/Los_Angeles", hour: "numeric", minute: "2-digit", timeZoneName: "short" }) : "";
+  const report = d.report_title ? d.report_title.replace(/.*\(|\).*/g, "") : "";
+  const next = d.next_update ? ` · dept. next update ${d.next_update.replace(/^.*2026 /, "")}` : "";
+  sub.textContent = `${report ? report + " · " : ""}${(d.ballots_cast || 0).toLocaleString()} ballots counted, est. ${Math.round(d.pct_reporting || 0)}% of total${next} · page updated ${t}`;
+  d.contests.forEach(render);
+}
+async function refresh() { await load(); setTimeout(refresh, REFRESH_MS); }
+refresh();
+</script>
+</body>
+</html>

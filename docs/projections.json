@@ -1,11 +1,11 @@
 {
- "updated_utc": "2026-11-04T06:48:12+00:00",
+ "updated_utc": "2026-11-04T07:48:25+00:00",
  "report_title": "November 3, 2026, Consolidated General Election Results (Preliminary)",
- "next_update": "November 3, 2026 11:45 PM",
- "pct_reporting": 55.6,
- "ballots_cast": 184737,
+ "next_update": "November 4, 2026 4:00 PM",
+ "pct_reporting": 55.7,
+ "ballots_cast": 185032,
  "expected_total_ballots": 332076,
- "precincts_reported": 496,
+ "precincts_reported": 514,
  "precincts_total": 514,
  "final": false,
  "contests": [
@@ -21,137 +21,137 @@
    "rcv": false,
    "last_round": false,
    "votes": {
-    "Scott Wiener": 87536,
-    "Connie Chan": 70350
+    "Scott Wiener": 87641,
+    "Connie Chan": 70511
    },
-   "share": 53.49,
-   "lo": 50.44,
-   "hi": 56.54,
+   "share": 53.47,
+   "lo": 50.43,
+   "hi": 56.51,
    "late_lean": -4.4,
-   "raw_share": 55.44,
+   "raw_share": 55.42,
    "final": false
   },
   {
    "id": "member-board-of-supervisors-district-2-ranked-choice-voting-",
    "name": "Supervisor, District 2",
-   "subtitle": "Ranked choice, first choices for now",
+   "subtitle": "Ranked choice, final round",
    "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 2 (Ranked-Choice Voting Contest)",
    "type": "race",
    "left": "Monthanus Ratanapakdee",
    "right": "Stephen Sherrill",
    "threshold": 50.0,
    "rcv": true,
-   "last_round": false,
+   "last_round": true,
    "votes": {
-    "Stephen Sherrill": 12688,
-    "Monthanus Ratanapakdee": 1034,
-    "Nicholas Berg": 936,
-    "Guy McCoy": 414
+    "Stephen Sherrill": 13340,
+    "Monthanus Ratanapakdee": 1369,
+    "Nicholas Berg": 0,
+    "Guy McCoy": 0
    },
-   "share": 91.58,
-   "lo": 88.53,
-   "hi": 94.63,
+   "share": 89.81,
+   "lo": 86.76,
+   "hi": 92.85,
    "late_lean": -2.0,
-   "raw_share": 92.46,
+   "raw_share": 90.69,
    "final": false
   },
   {
    "id": "member-board-of-supervisors-district-4-ranked-choice-voting-",
    "name": "Supervisor, District 4",
-   "subtitle": "Ranked choice, first choices for now",
+   "subtitle": "Ranked choice, final round",
    "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 4 (Ranked-Choice Voting Contest)",
    "type": "race",
    "left": "Albert Chow",
    "right": "Alan Wong",
    "threshold": 50.0,
    "rcv": true,
-   "last_round": false,
+   "last_round": true,
    "votes": {
-    "Alan Wong": 10131,
-    "Albert Chow": 2803,
-    "Jeremy Julian Greco": 2418
+    "Alan Wong": 11182,
+    "Albert Chow": 3585,
+    "Jeremy Julian Greco": 0
    },
-   "share": 76.11,
-   "lo": 73.05,
-   "hi": 79.17,
+   "share": 73.51,
+   "lo": 70.46,
+   "hi": 76.56,
    "late_lean": -5.0,
-   "raw_share": 78.33,
+   "raw_share": 75.72,
    "final": false
   },
   {
    "id": "member-board-of-supervisors-district-6-ranked-choice-voting-",
    "name": "Supervisor, District 6",
-   "subtitle": "Ranked choice, first choices for now",
+   "subtitle": "Ranked choice, final round",
    "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 6 (Ranked-Choice Voting Contest)",
    "type": "race",
    "left": "Alex Behrend",
    "right": "Matt Dorsey",
    "threshold": 50.0,
    "rcv": true,
-   "last_round": false,
+   "last_round": true,
    "votes": {
-    "Matt Dorsey": 7292,
-    "Alex Behrend": 1672
+    "Matt Dorsey": 7564,
+    "Alex Behrend": 1794
    },
-   "share": 79.57,
-   "lo": 76.51,
-   "hi": 82.64,
+   "share": 79.06,
+   "lo": 76.0,
+   "hi": 82.12,
    "late_lean": -4.0,
-   "raw_share": 81.35,
+   "raw_share": 80.83,
    "final": false
   },
   {
    "id": "member-board-of-supervisors-district-8-ranked-choice-voting-",
    "name": "Supervisor, District 8",
-   "subtitle": "Ranked choice, first choices for now",
+   "subtitle": "Ranked choice, final round",
    "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 8 (Ranked-Choice Voting Contest)",
    "type": "race",
    "left": "Darshini Patel",
    "right": "Gary McCoy",
    "threshold": 50.0,
    "rcv": true,
-   "last_round": false,
+   "last_round": true,
    "votes": {
-    "Gary McCoy": 11205,
-    "Darshini Patel": 5732,
-    "Emanuel \"Manny\" Yekutiel": 2883,
-    "Michael T. Nguyen": 2457
+    "Gary McCoy": 13687,
+    "Darshini Patel": 7499,
+    "Emanuel \"Manny\" Yekutiel": 0,
+    "Michael T. Nguyen": 0
    },
-   "share": 67.93,
-   "lo": 64.87,
-   "hi": 70.99,
+   "share": 66.38,
+   "lo": 63.32,
+   "hi": 69.43,
    "late_lean": 4.0,
-   "raw_share": 66.16,
+   "raw_share": 64.6,
    "final": false
   },
   {
    "id": "member-board-of-supervisors-district-10-ranked-choice-voting",
    "name": "Supervisor, District 10",
-   "subtitle": "Ranked choice, first choices for now",
+   "subtitle": "Ranked choice, final round",
    "source_name": "MEMBER, BOARD OF SUPERVISORS, DISTRICT 10 (Ranked-Choice Voting Contest)",
    "type": "race",
    "left": "Dionjay (Dj) Brookter",
    "right": "Theo Ellington",
    "threshold": 50.0,
    "rcv": true,
-   "last_round": false,
+   "last_round": true,
    "votes": {
-    "Theo Ellington": 5092,
-    "Dionjay (Dj) Brookter": 1625,
-    "J.r. Eppler": 1363,
-    "Jessica Pessecow": 752,
-    "Mike Trouble Lin": 534,
-    "Deandra Bryant": 379,
-    "Ellsworth \"Ell\" M. Jennison, JR.": 236,
-    "Shawn M. Richard": 183,
-    "Jamo Muhammad": 153,
-    "Pearci \"Pj\" Bastiany III": 125
+    "Theo Ellington": 6385,
+    "Dionjay (Dj) Brookter": 3163,
+    "J.r. Eppler": 0,
+    "Jessica Pessecow": 0,
+    "Mike Trouble Lin": 0,
+    "Deandra Bryant": 0,
+    "Ellsworth \"Ell\" M. Jennison, JR.": 0,
+    "Shawn M. Richard": 0,
+    "Jamo Muhammad": 0,
+    "Pearci \"Pj\" Bastiany III": 0
    },
-   "share": 74.03,
-   "lo": 70.96,
-   "hi": 77.11,
+   "share": 65.1,
+   "lo": 62.04,
+   "hi": 68.17,
    "late_lean": -4.0,
-   "raw_share": 75.81,
+   "raw_share": 66.87,
    "final": false
   },
   {
@@ -164,14 +164,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 122062,
-    "No": 50703
+    "Yes": 122226,
+    "No": 50809
    },
-   "share": 69.32,
-   "lo": 66.28,
-   "hi": 72.37,
+   "share": 69.31,
+   "lo": 66.27,
+   "hi": 72.35,
    "late_lean": -3.0,
-   "raw_share": 70.65,
+   "raw_share": 70.64,
    "final": false
   },
   {
@@ -184,14 +184,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 85032,
-    "No": 85674
+    "Yes": 85175,
+    "No": 85805
    },
    "share": 51.59,
-   "lo": 48.54,
+   "lo": 48.55,
    "hi": 54.63,
    "late_lean": 4.0,
-   "raw_share": 49.81,
+   "raw_share": 49.82,
    "final": false
   },
   {
@@ -204,14 +204,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 137939,
-    "No": 34792
+    "Yes": 138152,
+    "No": 34852
    },
-   "share": 80.75,
+   "share": 80.74,
    "lo": 77.7,
-   "hi": 83.79,
+   "hi": 83.78,
    "late_lean": 2.0,
-   "raw_share": 79.86,
+   "raw_share": 79.85,
    "final": false
   },
   {
@@ -224,14 +224,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 100925,
-    "No": 73801
+    "Yes": 101064,
+    "No": 73937
    },
-   "share": 55.99,
+   "share": 55.98,
    "lo": 52.94,
-   "hi": 59.03,
+   "hi": 59.02,
    "late_lean": -4.0,
-   "raw_share": 57.76,
+   "raw_share": 57.75,
    "final": false
   },
   {
@@ -244,14 +244,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 115722,
-    "No": 57280
+    "Yes": 115890,
+    "No": 57388
    },
    "share": 66.0,
    "lo": 62.96,
-   "hi": 69.05,
+   "hi": 69.03,
    "late_lean": -2.0,
-   "raw_share": 66.89,
+   "raw_share": 66.88,
    "final": false
   },
   {
@@ -264,14 +264,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 109173,
-    "No": 64467
+    "Yes": 109328,
+    "No": 64585
    },
    "share": 61.54,
    "lo": 58.5,
-   "hi": 64.59,
+   "hi": 64.57,
    "late_lean": -3.0,
-   "raw_share": 62.87,
+   "raw_share": 62.86,
    "final": false
   },
   {
@@ -284,14 +284,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 64656,
-    "No": 109160
+    "Yes": 64776,
+    "No": 109319
    },
-   "share": 34.98,
-   "lo": 31.93,
-   "hi": 38.02,
+   "share": 34.99,
+   "lo": 31.95,
+   "hi": 38.03,
    "late_lean": -5.0,
-   "raw_share": 37.2,
+   "raw_share": 37.21,
    "final": false
   },
   {
@@ -304,14 +304,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 125989,
-    "No": 47906
+    "Yes": 126168,
+    "No": 47995
    },
-   "share": 74.23,
-   "lo": 71.18,
-   "hi": 77.27,
+   "share": 74.21,
+   "lo": 71.17,
+   "hi": 77.25,
    "late_lean": 4.0,
-   "raw_share": 72.45,
+   "raw_share": 72.44,
    "final": false
   },
   {
@@ -324,14 +324,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 76803,
-    "No": 93785
+    "Yes": 76936,
+    "No": 93917
    },
    "share": 46.8,
-   "lo": 43.75,
+   "lo": 43.76,
    "hi": 49.84,
    "late_lean": 4.0,
-   "raw_share": 45.02,
+   "raw_share": 45.03,
    "final": false
   },
   {
@@ -344,14 +344,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 134938,
-    "No": 35719
+    "Yes": 135129,
+    "No": 35793
    },
-   "share": 80.4,
-   "lo": 77.36,
-   "hi": 83.45,
+   "share": 80.39,
+   "lo": 77.35,
+   "hi": 83.43,
    "late_lean": 3.0,
-   "raw_share": 79.07,
+   "raw_share": 79.06,
    "final": false
   }
  ]

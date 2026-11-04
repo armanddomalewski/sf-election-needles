@@ -18,6 +18,10 @@ while true; do
     fi
     sleep 30
   else
+    # Idle until 8:40 PM Pacific on election night; the first batch posts at 8:45.
+    if [ "$(TZ=America/Los_Angeles date +%Y%m%d%H%M)" -lt 202611032040 ]; then
+      echo "$(date +%H:%M) waiting for polls to close (first batch 8:45 PM)"; sleep 300; continue
+    fi
     git pull -q --rebase origin main 2>/dev/null || true     # pick up config/lean tweaks
     python3 fetch_browser.py && python3 project.py && ./publish.sh
     sleep "$INTERVAL"

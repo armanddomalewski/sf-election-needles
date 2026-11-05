@@ -18,9 +18,13 @@ while true; do
     fi
     sleep 30
   else
-    # Idle until 8:40 PM Pacific on election night; the first batch posts at 8:45.
-    if [ "$(TZ=America/Los_Angeles date +%Y%m%d%H%M)" -lt 202611032040 ]; then
+    # Election night (Nov 3) ran every 3 minutes from 8:40 PM. After that the department posts
+    # once a day at 4 PM, so only fetch between 3:55 and 4:45 PM Pacific and sleep otherwise.
+    now=$(TZ=America/Los_Angeles date +%Y%m%d%H%M); hm=${now:8:4}
+    if [ "$now" -lt 202611032040 ]; then
       echo "$(date +%H:%M) waiting for polls to close (first batch 8:45 PM)"; sleep 300; continue
+    elif [ "$now" -gt 202611040400 ] && { [ "$hm" -lt 1555 ] || [ "$hm" -gt 1645 ]; }; then
+      echo "$(date +%H:%M) idle; next department update is 4:00 PM"; sleep 600; continue
     fi
     git pull -q --rebase origin main 2>/dev/null || true     # pick up config/lean tweaks
     python3 fetch_browser.py && python3 project.py && ./publish.sh

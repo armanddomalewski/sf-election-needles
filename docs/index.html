@@ -155,9 +155,9 @@ async function load() {
     return;
   }
   document.getElementById("empty").hidden = true;
-  const t = d.updated_utc ? new Date(d.updated_utc).toLocaleTimeString("en-US", { timeZone: "America/Los_Angeles", hour: "numeric", minute: "2-digit", timeZoneName: "short" }) : "";
+  const t = d.updated_utc ? new Date(d.updated_utc).toLocaleString("en-US", { timeZone: "America/Los_Angeles", weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" }) : "";
   const report = d.report_title ? d.report_title.replace(/.*\(|\).*/g, "") : "";
-  const next = d.next_update ? ` · dept. next update ${d.next_update.replace(/^.*2026 /, "")}` : "";
+  const next = d.next_update ? ` · dept. next update ${d.next_update.replace(/, 2026/, "")}` : "";
   sub.textContent = `${report ? report + " · " : ""}${(d.ballots_cast || 0).toLocaleString()} ballots counted, est. ${Math.round(d.pct_reporting || 0)}% of total${next} · page updated ${t}`;
   d.contests.forEach(render);
 }

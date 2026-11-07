@@ -1,10 +1,10 @@
 {
- "updated_utc": "2026-11-07T00:16:28+00:00",
+ "updated_utc": "2026-11-07T23:59:46+00:00",
  "report_title": "November 3, 2026, Consolidated General Election Results (Preliminary)",
- "next_update": "November 7, 2026 4:00 PM",
- "pct_reporting": 92.7,
- "ballots_cast": 307917,
- "expected_total_ballots": 332076,
+ "next_update": "November 8, 2026 4:00 PM",
+ "pct_reporting": 100.0,
+ "ballots_cast": 332467,
+ "expected_total_ballots": 332467,
  "precincts_reported": 514,
  "precincts_total": 514,
  "final": false,
@@ -21,14 +21,14 @@
    "rcv": false,
    "last_round": false,
    "votes": {
-    "Scott Wiener": 142519,
-    "Connie Chan": 121206
+    "Scott Wiener": 153339,
+    "Connie Chan": 131492
    },
-   "share": 53.72,
-   "lo": 52.97,
-   "hi": 54.47,
+   "share": 53.84,
+   "lo": 53.84,
+   "hi": 53.84,
    "late_lean": -4.4,
-   "raw_share": 54.04,
+   "raw_share": 53.84,
    "final": false
   },
   {
@@ -48,9 +48,9 @@
     "Nicholas Berg": 0,
     "Guy McCoy": 0
    },
-   "share": 90.39,
-   "lo": 89.64,
-   "hi": 91.14,
+   "share": 90.53,
+   "lo": 90.53,
+   "hi": 90.53,
    "late_lean": -2.0,
    "raw_share": 90.53,
    "final": false
@@ -71,9 +71,9 @@
     "Albert Chow": 6017,
     "Jeremy Julian Greco": 0
    },
-   "share": 75.14,
-   "lo": 74.39,
-   "hi": 75.89,
+   "share": 75.51,
+   "lo": 75.51,
+   "hi": 75.51,
    "late_lean": -5.0,
    "raw_share": 75.51,
    "final": false
@@ -93,9 +93,9 @@
     "Matt Dorsey": 12048,
     "Alex Behrend": 3059
    },
-   "share": 79.46,
-   "lo": 78.71,
-   "hi": 80.21,
+   "share": 79.75,
+   "lo": 79.75,
+   "hi": 79.75,
    "late_lean": -4.0,
    "raw_share": 79.75,
    "final": false
@@ -117,9 +117,9 @@
     "Michael T. Nguyen": 0,
     "Emanuel \"Manny\" Yekutiel": 0
    },
-   "share": 63.84,
-   "lo": 63.09,
-   "hi": 64.59,
+   "share": 63.55,
+   "lo": 63.55,
+   "hi": 63.55,
    "late_lean": 4.0,
    "raw_share": 63.55,
    "final": false
@@ -147,9 +147,9 @@
     "Jamo Muhammad": 0,
     "Pearci \"Pj\" Bastiany III": 0
    },
-   "share": 64.75,
-   "lo": 64.0,
-   "hi": 65.5,
+   "share": 65.04,
+   "lo": 65.04,
+   "hi": 65.04,
    "late_lean": -4.0,
    "raw_share": 65.04,
    "final": false
@@ -164,14 +164,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 196642,
-    "No": 90175
+    "Yes": 211429,
+    "No": 97858
    },
-   "share": 68.34,
-   "lo": 67.59,
-   "hi": 69.09,
+   "share": 68.36,
+   "lo": 68.36,
+   "hi": 68.36,
    "late_lean": -3.0,
-   "raw_share": 68.56,
+   "raw_share": 68.36,
    "final": false
   },
   {
@@ -184,14 +184,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 146415,
-    "No": 137078
+    "Yes": 158565,
+    "No": 147159
    },
-   "share": 51.94,
-   "lo": 51.19,
-   "hi": 52.69,
+   "share": 51.87,
+   "lo": 51.87,
+   "hi": 51.87,
    "late_lean": 4.0,
-   "raw_share": 51.65,
+   "raw_share": 51.87,
    "final": false
   },
   {
@@ -204,14 +204,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 233738,
-    "No": 53279
+    "Yes": 252446,
+    "No": 57135
    },
-   "share": 81.58,
-   "lo": 80.83,
-   "hi": 82.33,
+   "share": 81.54,
+   "lo": 81.54,
+   "hi": 81.54,
    "late_lean": 2.0,
-   "raw_share": 81.44,
+   "raw_share": 81.54,
    "final": false
   },
   {
@@ -224,14 +224,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 160026,
-    "No": 130420
+    "Yes": 171598,
+    "No": 141677
    },
-   "share": 54.81,
-   "lo": 54.06,
-   "hi": 55.56,
+   "share": 54.78,
+   "lo": 54.78,
+   "hi": 54.78,
    "late_lean": -4.0,
-   "raw_share": 55.1,
+   "raw_share": 54.78,
    "final": false
   },
   {
@@ -244,14 +244,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 184879,
-    "No": 102032
+    "Yes": 198470,
+    "No": 110807
    },
-   "share": 64.29,
-   "lo": 63.54,
-   "hi": 65.04,
+   "share": 64.17,
+   "lo": 64.17,
+   "hi": 64.17,
    "late_lean": -2.0,
-   "raw_share": 64.44,
+   "raw_share": 64.17,
    "final": false
   },
   {
@@ -264,14 +264,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 173341,
-    "No": 114835
+    "Yes": 186118,
+    "No": 124626
    },
-   "share": 59.93,
-   "lo": 59.18,
-   "hi": 60.68,
+   "share": 59.89,
+   "lo": 59.89,
+   "hi": 59.89,
    "late_lean": -3.0,
-   "raw_share": 60.15,
+   "raw_share": 59.89,
    "final": false
   },
   {
@@ -284,14 +284,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 100811,
-    "No": 188447
+    "Yes": 108341,
+    "No": 203702
    },
-   "share": 34.49,
-   "lo": 33.74,
-   "hi": 35.24,
+   "share": 34.72,
+   "lo": 34.72,
+   "hi": 34.72,
    "late_lean": -5.0,
-   "raw_share": 34.85,
+   "raw_share": 34.72,
    "final": false
   },
   {
@@ -304,14 +304,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 214358,
-    "No": 75397
+    "Yes": 231481,
+    "No": 81046
    },
-   "share": 74.27,
-   "lo": 73.52,
-   "hi": 75.02,
+   "share": 74.07,
+   "lo": 74.07,
+   "hi": 74.07,
    "late_lean": 4.0,
-   "raw_share": 73.98,
+   "raw_share": 74.07,
    "final": false
   },
   {
@@ -324,14 +324,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 133651,
-    "No": 149692
+    "Yes": 144956,
+    "No": 160570
    },
-   "share": 47.46,
-   "lo": 46.71,
-   "hi": 48.21,
+   "share": 47.44,
+   "lo": 47.44,
+   "hi": 47.44,
    "late_lean": 4.0,
-   "raw_share": 47.17,
+   "raw_share": 47.44,
    "final": false
   },
   {
@@ -344,14 +344,14 @@
    "right": "Yes",
    "threshold": 50.0,
    "votes": {
-    "Yes": 229258,
-    "No": 54466
+    "Yes": 247525,
+    "No": 58415
    },
-   "share": 81.02,
-   "lo": 80.27,
-   "hi": 81.77,
+   "share": 80.91,
+   "lo": 80.91,
+   "hi": 80.91,
    "late_lean": 3.0,
-   "raw_share": 80.8,
+   "raw_share": 80.91,
    "final": false
   }
  ]

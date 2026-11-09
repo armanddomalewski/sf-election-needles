@@ -1,10 +1,10 @@
 {
- "updated_utc": "2026-11-09T00:02:04+00:00",
+ "updated_utc": "2026-11-09T18:41:38+00:00",
  "report_title": "November 3, 2026, Consolidated General Election Results (Preliminary)",
  "next_update": "November 9, 2026 4:00 PM",
- "pct_reporting": 100.0,
+ "pct_reporting": 94.1,
  "ballots_cast": 342844,
- "expected_total_ballots": 342844,
+ "expected_total_ballots": 364213,
  "precincts_reported": 514,
  "precincts_total": 514,
  "final": false,
@@ -24,9 +24,9 @@
     "Scott Wiener": 157394,
     "Connie Chan": 136435
    },
-   "share": 53.57,
-   "lo": 53.57,
-   "hi": 53.57,
+   "share": 53.31,
+   "lo": 52.56,
+   "hi": 54.06,
    "late_lean": -4.4,
    "raw_share": 53.57,
    "final": false
@@ -48,9 +48,9 @@
     "Nicholas Berg": 0,
     "Guy McCoy": 0
    },
-   "share": 90.28,
-   "lo": 90.28,
-   "hi": 90.28,
+   "share": 90.16,
+   "lo": 89.41,
+   "hi": 90.91,
    "late_lean": -2.0,
    "raw_share": 90.28,
    "final": false
@@ -71,9 +71,9 @@
     "Albert Chow": 6537,
     "Jeremy Julian Greco": 0
    },
-   "share": 75.39,
-   "lo": 75.39,
-   "hi": 75.39,
+   "share": 75.1,
+   "lo": 74.35,
+   "hi": 75.85,
    "late_lean": -5.0,
    "raw_share": 75.39,
    "final": false
@@ -93,9 +93,9 @@
     "Matt Dorsey": 13480,
     "Alex Behrend": 3647
    },
-   "share": 78.71,
-   "lo": 78.71,
-   "hi": 78.71,
+   "share": 78.47,
+   "lo": 77.72,
+   "hi": 79.22,
    "late_lean": -4.0,
    "raw_share": 78.71,
    "final": false
@@ -117,9 +117,9 @@
     "Michael T. Nguyen": 0,
     "Emanuel \"Manny\" Yekutiel": 0
    },
-   "share": 63.27,
-   "lo": 63.27,
-   "hi": 63.27,
+   "share": 63.5,
+   "lo": 62.75,
+   "hi": 64.25,
    "late_lean": 4.0,
    "raw_share": 63.27,
    "final": false
@@ -147,9 +147,9 @@
     "Jamo Muhammad": 0,
     "Pearci \"Pj\" Bastiany III": 0
    },
-   "share": 64.76,
-   "lo": 64.76,
-   "hi": 64.76,
+   "share": 64.52,
+   "lo": 63.77,
+   "hi": 65.27,
    "late_lean": -4.0,
    "raw_share": 64.76,
    "final": false
@@ -167,9 +167,9 @@
     "Yes": 216795,
     "No": 101191
    },
-   "share": 68.18,
-   "lo": 68.18,
-   "hi": 68.18,
+   "share": 68.0,
+   "lo": 67.25,
+   "hi": 68.75,
    "late_lean": -3.0,
    "raw_share": 68.18,
    "final": false
@@ -187,9 +187,9 @@
     "Yes": 164430,
     "No": 149904
    },
-   "share": 52.31,
-   "lo": 52.31,
-   "hi": 52.31,
+   "share": 52.55,
+   "lo": 51.8,
+   "hi": 53.3,
    "late_lean": 4.0,
    "raw_share": 52.31,
    "final": false
@@ -207,9 +207,9 @@
     "Yes": 260103,
     "No": 58305
    },
-   "share": 81.69,
-   "lo": 81.69,
-   "hi": 81.69,
+   "share": 81.81,
+   "lo": 81.06,
+   "hi": 82.56,
    "late_lean": 2.0,
    "raw_share": 81.69,
    "final": false
@@ -227,9 +227,9 @@
     "Yes": 175442,
     "No": 146680
    },
-   "share": 54.46,
-   "lo": 54.46,
-   "hi": 54.46,
+   "share": 54.23,
+   "lo": 53.48,
+   "hi": 54.98,
    "late_lean": -4.0,
    "raw_share": 54.46,
    "final": false
@@ -247,9 +247,9 @@
     "Yes": 203420,
     "No": 114502
    },
-   "share": 63.98,
-   "lo": 63.98,
-   "hi": 63.98,
+   "share": 63.87,
+   "lo": 63.12,
+   "hi": 64.62,
    "late_lean": -2.0,
    "raw_share": 63.98,
    "final": false
@@ -267,9 +267,9 @@
     "Yes": 190707,
     "No": 128808
    },
-   "share": 59.69,
-   "lo": 59.69,
-   "hi": 59.69,
+   "share": 59.51,
+   "lo": 58.76,
+   "hi": 60.26,
    "late_lean": -3.0,
    "raw_share": 59.69,
    "final": false
@@ -287,9 +287,9 @@
     "Yes": 110545,
     "No": 210437
    },
-   "share": 34.44,
-   "lo": 34.44,
-   "hi": 34.44,
+   "share": 34.15,
+   "lo": 33.4,
+   "hi": 34.9,
    "late_lean": -5.0,
    "raw_share": 34.44,
    "final": false
@@ -307,9 +307,9 @@
     "Yes": 238721,
     "No": 82707
    },
-   "share": 74.27,
-   "lo": 74.27,
-   "hi": 74.27,
+   "share": 74.5,
+   "lo": 73.75,
+   "hi": 75.25,
    "late_lean": 4.0,
    "raw_share": 74.27,
    "final": false
@@ -327,9 +327,9 @@
     "Yes": 150595,
     "No": 163542
    },
-   "share": 47.94,
-   "lo": 47.94,
-   "hi": 47.94,
+   "share": 48.17,
+   "lo": 47.42,
+   "hi": 48.92,
    "late_lean": 4.0,
    "raw_share": 47.94,
    "final": false
@@ -347,9 +347,9 @@
     "Yes": 254440,
     "No": 60063
    },
-   "share": 80.9,
-   "lo": 80.9,
-   "hi": 80.9,
+   "share": 81.08,
+   "lo": 80.33,
+   "hi": 81.83,
    "late_lean": 3.0,
    "raw_share": 80.9,
    "final": false

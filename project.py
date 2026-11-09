@@ -127,7 +127,12 @@ def project_all(cfg, results, final=False):
     reg = meta.get("voter_registration_total")
     expected = cfg.get("expected_total_ballots") or (reg * cfg.get("expected_turnout", 0.6) if reg else 0)
     expected = max(expected, counted, 1)
-    remaining = 0.0 if final else max(0.0, 1.0 - counted / expected)
+    # The department keeps counting for about two weeks; until the report is marked final,
+    # never let the uncounted share fall below a small floor even if the count has passed
+    # the turnout guess (the guess is the weaker number).
+    final = final or bool(re.search(r"final|certified|official", meta.get("report_title", ""), re.I)
+                          and not re.search(r"preliminary", meta.get("report_title", ""), re.I))
+    remaining = 0.0 if final else max(cfg.get("min_remaining_fraction", 0.0), 1.0 - counted / expected)
     inc = [re.compile(x, re.I) for x in cfg.get("include", [".*"])]
     skip = [re.compile(x, re.I) for x in cfg.get("skip", [])]
     out = []
